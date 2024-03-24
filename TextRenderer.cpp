@@ -19,17 +19,20 @@ void TextRenderer::draw(char c, Vector position, Grid grid)
 
 void TextRenderer::drawFrame(Grid grid)
 {
-	for (int x = 0; x < grid.getDimensions().x; x++)
+	for (int y = 0; y < grid.getDimensions().y; y++)
 	{
-		for (int y = 0; y < grid.getDimensions().y; y++)
+		for (int x = 0; x < grid.getDimensions().x; x++)
 		{
 			if (x == grid.getDimensions().x - 1)
 			{
 				std::cout << grid.getTileAt(Vector(x, y)).getChar();
+				std::cout << grid.getTileAt(Vector(x, y)).getChar();
+				std::cout << std::endl;
 			}
 			else
 			{
-				std::cout << std::endl;
+				std::cout << grid.getTileAt(Vector(x, y)).getChar();
+				std::cout << grid.getTileAt(Vector(x, y)).getChar();
 			}
 		}
 	}

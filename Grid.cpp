@@ -1,12 +1,21 @@
 #include "Grid.h"
-Grid::Grid(int x, int y) : _width(x), _height(y)
+#include "TextRenderer.h"
+Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 {
-	for (int w = 0; w < x; w++)
+	for (int h = 0; h < _height; h++)
 	{
-		for (int h = 0; h < y; h++)
+		for (int w = 0; w < _width; w++)
 		{
-			Tile newTile(Vector(w, h), (char)254u, false);
-			_tiles.push_back(newTile);
+			if (w > 0 && w < _width - 1 && h > 0 && h < _height - 1)
+			{
+				Tile newTile(Vector(w, h), TextRenderer::empty, false);
+				_tiles.push_back(newTile);
+			}
+			else
+			{
+				Tile newTile(Vector(w, h), TextRenderer::boxChar, true);
+				_tiles.push_back(newTile);
+			}
 		}
 	}
 }
