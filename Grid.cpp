@@ -19,11 +19,11 @@ Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 
 				if (h == 0) //set normals for top/bottom border collisions
 				{
-					newTile.setNormal(Vector().down());
+					newTile.setNormal(Vector().up());
 				}
 				if (h == _height - 1)
 				{
-					newTile.setNormal(Vector().up());
+					newTile.setNormal(Vector().down());
 				}
 
 				if (w == 0) //set normals for paddle collisons

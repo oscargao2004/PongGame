@@ -14,8 +14,8 @@ public:
 	bool isEqual(Vector vec);
 	int magnitude();
 
-	Vector up();
 	Vector down();
+	Vector up();
 	Vector right();
 	Vector left();
 };

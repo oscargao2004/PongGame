@@ -27,12 +27,12 @@ int Vector::magnitude()
     return _gridLength;
 }
 
-Vector Vector::up()
+Vector Vector::down()
 {
     return Vector(0,1);
 }
 
-Vector Vector::down()
+Vector Vector::up()
 {
     return Vector(0,-1);
 }
