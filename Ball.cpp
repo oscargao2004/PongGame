@@ -32,7 +32,7 @@ void Ball::move(Grid &grid)
         {
             _trajectoryDirection = Vector(_trajectoryDirection.x * -1, _trajectoryDirection.y);
         }
-        else
+        if (nextTile.getNormal().y == 0)
         {
             _trajectoryDirection = Vector(_trajectoryDirection.x, _trajectoryDirection.y * -1);
         }

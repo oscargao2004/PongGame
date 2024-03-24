@@ -15,7 +15,7 @@ int main()
 	Paddle p1(Vector(2, grid.getDimensions().y / 2), 3, grid);
 	Paddle p2(Vector(grid.getDimensions().x - 3, grid.getDimensions().y / 2), 3, grid);
 
-	ball.setTrajectory(Vector().up());
+	ball.setTrajectory(Vector().down()); //note up and down are flipped on console rendering
 
 	while (true)
 	{
