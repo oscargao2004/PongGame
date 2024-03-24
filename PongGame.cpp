@@ -11,15 +11,15 @@ InputHandler input;
 
 int main()
 {
-	//Ball ball(Vector(5, 7), grid);
+	Ball ball(Vector(5, 7), grid);
 	Paddle p1(Vector(2, grid.getDimensions().y / 2), 2, grid);
 	Paddle p2(Vector(grid.getDimensions().x - 3, grid.getDimensions().y / 2), 3, grid);
 
-	//ball.setTrajectory(Vector().right().add(Vector().down())); //note up and down are flipped on console rendering
+	ball.setTrajectory(Vector().right().add(Vector().down()));
 
 	while (true)
 	{
-		//ball.move(grid);
+		ball.move(grid);
 
 		if (input.getKeyDown('w'))
 		{
@@ -29,7 +29,6 @@ int main()
 		{
 			p1.move(Vector().down(), grid);
 		}
-
 
 		TextRenderer::drawFrame(grid);
 		TextRenderer::updateFrame();

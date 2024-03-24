@@ -14,7 +14,29 @@ void Ball::setTrajectory(Vector vec)
 
 void Ball::move(Grid &grid)
 {
-    Tile& currentTile = grid.getTileAt(_position);
+    Tile currentTile = grid.getTileAt(_position);
+    Tile nextTile = grid.getTileAt(_position.add(_trajectoryDirection));
+
+    if (nextTile.isCollidable())
+    {
+        if (nextTile.getNormal().isEqual(Vector().right()) || nextTile.getNormal().isEqual(Vector().left()))
+        {
+            _trajectoryDirection.x *= -1;
+        }
+        else
+        {
+            _trajectoryDirection.y *= -1;
+        }
+    }
+    else
+    {
+        _position = _position.add(_trajectoryDirection);
+    }
+
+    TextRenderer::clearTile(currentTile.getPosition(), grid);
+    TextRenderer::drawTile(_position, grid, false);
+
+    /*Tile& currentTile = grid.getTileAt(_position);
     Tile& nextTile = grid.getTileAt(_position.add(_trajectoryDirection));
 
     if (!nextTile.isCollidable())
@@ -36,7 +58,7 @@ void Ball::move(Grid &grid)
             _trajectoryDirection.x *= -1;
 
         }
-    }
+    }*/
 
 }
 
