@@ -26,14 +26,14 @@ Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 					newTile.setNormal(Vector().up());
 				}
 
-				if (w == 0) //set normals for paddle collisons
+				if (w == 0) //set gameover state for left/right wall collisons
 				{
-					newTile.setNormal(Vector().right());
+					newTile.setGameOver();
 
 				}
 				if (w == _width - 1)
 				{
-					newTile.setNormal(Vector().left());
+					newTile.setGameOver();
 
 				}
 			}

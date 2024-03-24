@@ -1,5 +1,7 @@
 #include "Menu.h"
+#include "TextRenderer.h"
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 bool Menu::start()
@@ -11,6 +13,18 @@ bool Menu::start()
 
 	if (choice == 'Y')
 	{
-
+		TextRenderer::updateFrame();
+		return true;
+	}
+	else if (choice == 'N')
+	{
+		return false;
+	}
+	else
+	{
+		cout << "INVALID OPTION\n";
+		return NULL;
 	}
 }
+
+

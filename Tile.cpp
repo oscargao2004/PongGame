@@ -34,3 +34,13 @@ Vector Tile::getNormal()
 {
     return _normal;
 }
+
+void Tile::setGameOver()
+{
+    _gameOver = true;
+}
+
+bool Tile::isGameOver()
+{
+    return _gameOver;
+}

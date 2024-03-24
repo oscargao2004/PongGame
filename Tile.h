@@ -7,6 +7,7 @@ private:
 	char _character;
 	bool _collision;
 	Vector _normal;
+	bool _gameOver;
 
 	/*enum Type
 	{
@@ -29,6 +30,9 @@ public:
 
 	void setNormal(Vector vec);
 	Vector getNormal();
+
+	void setGameOver();
+	bool isGameOver();
 	//Tile(Vector pos, char character, Type type) : _position(pos), _character(character), _tileType(type) {}
-	Tile(Vector pos, char character, bool b) : _position(pos), _character(character), _collision(b) {}
+	Tile(Vector pos, char character, bool b) : _position(pos), _character(character), _collision(b), _gameOver(false) {}
 };

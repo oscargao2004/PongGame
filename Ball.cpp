@@ -2,6 +2,11 @@
 #include "TextRenderer.h"
 #include "Vector.h"
 
+Vector Ball::getPosition()
+{
+    return _position;
+}
+
 Vector Ball::getTrajectory()
 {
     return _trajectoryDirection;
