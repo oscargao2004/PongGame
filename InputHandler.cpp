@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include <iostream>
 
 char InputHandler::_key = 0;
 
@@ -9,6 +10,7 @@ bool InputHandler::getKeyDown(char key)
 		_key = _getch();
 		if (_key == key)
 		{
+			std::cout << "keyboard hit";
 			return true;
 		}
 		else
@@ -17,7 +19,7 @@ bool InputHandler::getKeyDown(char key)
 		}
 
 	}
-	return NULL;
+	return false;
 }
 
 

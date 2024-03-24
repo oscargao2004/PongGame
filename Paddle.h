@@ -9,5 +9,6 @@ private:
 public:
 	Paddle(Vector position, int length, Grid &grid);
 	void move(Vector direction, Grid &grid);
+	Vector getPosition();
 };
 

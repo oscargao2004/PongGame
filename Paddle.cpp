@@ -53,3 +53,8 @@ void Paddle::move(Vector direction, Grid &grid)
 		TextRenderer::drawTile(_position.add(Vector(0, -i - 1)), grid, true);
 	}
 }
+
+Vector Paddle::getPosition()
+{
+	return _position;
+}

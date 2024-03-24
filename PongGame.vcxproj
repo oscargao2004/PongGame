@@ -136,6 +136,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="PongGame.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="Tile.h" />

@@ -43,5 +43,5 @@ void TextRenderer::updateFrame()
 
 	SetConsoleCursorPosition(console, defaultCursorPos);
 
-	Sleep(1000/30); //adjust framerate
+	Sleep(1000/10); //adjust framerate
 }
