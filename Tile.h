@@ -8,6 +8,7 @@ private:
 	bool _isEmpty;
 public:
 	Vector getPosition();
+	void setEmpty(bool b);
 	void setChar(char c);
 	char getChar();
 	Tile(Vector pos, char character, bool isEmpty) : _position(pos), _character(character), _isEmpty(isEmpty) {}

@@ -3,20 +3,21 @@
 #include "TextRenderer.h"
 #include "Vector.h"
 #include "InputHandler.h"
+#include "Ball.h"
 
 Grid grid(20, 15);
 InputHandler input;
 
 int main()
 {
-	TextRenderer::drawFrame(grid);
+	Ball ball(grid);
+	TextRenderer::draw(TextRenderer::boxChar, Vector(1, 1), grid);
 
 	while (true)
 	{
-		if (input.getKeyDown('b'))
-		{
-			std::cout << "balls" << std::endl;
-		}
+		TextRenderer::drawFrame(grid);
+		TextRenderer::updateFrame(grid);
+
 	}
 	return 0;
 }

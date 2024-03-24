@@ -1,5 +1,23 @@
 #include "TextRenderer.h"
 #include <iostream>
+#include <windows.h>
+
+void TextRenderer::draw(char c, Vector position, Grid grid)
+{
+	Tile tile = grid.getTileAt(position);
+
+	tile.setChar(c);
+
+	if (c == TextRenderer::boxChar)
+	{
+		tile.setEmpty(false);
+	}
+	else
+	{
+		tile.setEmpty(true);
+	}
+
+}
 
 void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
 {
@@ -9,11 +27,6 @@ void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
 	{
 
 	}
-
-}
-void TextRenderer::draw(char c, Vector position, Grid grid)
-{
-	grid.getTileAt(position).setChar(c);
 
 }
 
@@ -37,7 +50,13 @@ void TextRenderer::drawFrame(Grid grid)
 		}
 	}
 }
-void TextRenderer::clearFrame()
+void TextRenderer::updateFrame(Grid grid)
 {
-	std::cout << std::flush;
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD defaultCursorPos = { 0,0 };
+	DWORD writtenChars;
+
+	SetConsoleCursorPosition(console, defaultCursorPos);
+
+	Sleep(1000/60); //adjust framerate
 }

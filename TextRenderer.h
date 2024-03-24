@@ -10,6 +10,6 @@ public:
 	static void draw(char c, Vector start, Vector end, Grid grid);
 	static void draw(char c, Vector position, Grid grid);
 	static void drawFrame(Grid grid);
-	static void clearFrame();
+	static void updateFrame(Grid grid);
 };
 
