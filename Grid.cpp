@@ -1,21 +1,44 @@
 #include "Grid.h"
 #include "TextRenderer.h"
+#include "Tile.h"
 Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 {
 	for (int h = 0; h < _height; h++)
 	{
 		for (int w = 0; w < _width; w++)
 		{
-			if (w > 0 && w < _width - 1 && h > 0 && h < _height - 1)
+			if (w > 0 && w < _width - 1 && h > 0 && h < _height - 1) //render empty spaces
 			{
-				Tile newTile(Vector(w, h), TextRenderer::empty, false);
+				Tile newTile(Vector(w, h), TextRenderer::empty, true);
 				_tiles.push_back(newTile);
 			}
-			else
+			else //render border 
 			{
 				Tile newTile(Vector(w, h), TextRenderer::boxChar, true);
 				_tiles.push_back(newTile);
+
+				if (h == 0) //set normals for top/bottom border collisions
+				{
+					newTile.setNormal(Vector().down());
+				}
+				if (h == _height - 1)
+				{
+					newTile.setNormal(Vector().up());
+				}
+
+				if (w == 0) //set normals for paddle collisons
+				{
+					newTile.setNormal(Vector().right());
+
+				}
+				if (w == _width - 1)
+				{
+					newTile.setNormal(Vector().left());
+
+				}
 			}
+
+			
 		}
 	}
 }

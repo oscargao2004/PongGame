@@ -12,9 +12,37 @@ void Ball::setTrajectory(Vector vec)
     _trajectoryDirection = vec;
 }
 
-Ball::Ball(Grid &grid)
+void Ball::move(Grid &grid)
 {
-    _grid = grid;
-    TextRenderer::draw(TextRenderer::boxChar, Vector(10, 7), grid);
+    Tile& currentTile = grid.getTileAt(_position);
+    Tile& nextTile = grid.getTileAt(_position.add(_trajectoryDirection));
+
+    if (nextTile.isEmpty())
+    {
+        currentTile.setChar(TextRenderer::empty);
+        currentTile.setEmpty(true);
+        nextTile.setChar(TextRenderer::boxChar);
+        nextTile.setEmpty(false);
+
+        _position = nextTile.getPosition();
+    }
+    else
+    {
+        if (nextTile.getNormal().x == 0)
+        {
+            _trajectoryDirection = Vector(_trajectoryDirection.x * -1, _trajectoryDirection.y);
+        }
+        else
+        {
+            _trajectoryDirection = Vector(_trajectoryDirection.x, _trajectoryDirection.y * -1);
+        }
+    }
+
+}
+
+Ball::Ball(Vector pos, Grid &grid)
+{
+    _position = pos;
+    TextRenderer::draw(TextRenderer::boxChar, pos, grid);
 
 }
