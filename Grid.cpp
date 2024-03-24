@@ -20,16 +20,23 @@ Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 	}
 }
 
-Tile Grid::getTileAt(Vector position)
+Tile &Grid::getTileAt(Vector position)
 {
-	for (Tile tile : _tiles)
+	for (Tile& tile : _tiles)
 	{
-		Vector currentTilePos = tile.getPosition();
 		if (tile.getPosition().isEqual(position))
 		{
 			return tile;
 		}
 	}
+
+	/*for (int i = 0; i < _tiles.size(); i++)
+	{
+		if (_tiles[i].getPosition().isEqual(position))
+		{
+			return _tiles[i];
+		}
+	}*/
 
 }
 

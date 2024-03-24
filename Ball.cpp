@@ -12,8 +12,9 @@ void Ball::setTrajectory(Vector vec)
     _trajectoryDirection = vec;
 }
 
-Ball::Ball(Grid grid)
+Ball::Ball(Grid &grid)
 {
     _grid = grid;
-    TextRenderer::draw(TextRenderer::boxChar, Vector(10,7), grid);
+    TextRenderer::draw(TextRenderer::boxChar, Vector(10, 7), grid);
+
 }

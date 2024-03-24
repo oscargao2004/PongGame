@@ -2,10 +2,9 @@
 #include <iostream>
 #include <windows.h>
 
-void TextRenderer::draw(char c, Vector position, Grid grid)
+void TextRenderer::draw(char c, Vector pos, Grid &grid)
 {
-	Tile tile = grid.getTileAt(position);
-
+	Tile& tile = grid.getTileAt(pos);
 	tile.setChar(c);
 
 	if (c == TextRenderer::boxChar)
@@ -19,7 +18,7 @@ void TextRenderer::draw(char c, Vector position, Grid grid)
 
 }
 
-void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
+/*void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
 {
 	Vector vec = end.subtract(start);
 
@@ -28,9 +27,9 @@ void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
 
 	}
 
-}
+}*/
 
-void TextRenderer::drawFrame(Grid grid)
+void TextRenderer::drawFrame(Grid &grid)
 {
 	for (int y = 0; y < grid.getDimensions().y; y++)
 	{
@@ -50,11 +49,10 @@ void TextRenderer::drawFrame(Grid grid)
 		}
 	}
 }
-void TextRenderer::updateFrame(Grid grid)
+void TextRenderer::updateFrame()
 {
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD defaultCursorPos = { 0,0 };
-	DWORD writtenChars;
 
 	SetConsoleCursorPosition(console, defaultCursorPos);
 

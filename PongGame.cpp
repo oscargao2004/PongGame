@@ -11,12 +11,11 @@ InputHandler input;
 int main()
 {
 	Ball ball(grid);
-	TextRenderer::draw(TextRenderer::boxChar, Vector(1, 1), grid);
 
 	while (true)
 	{
 		TextRenderer::drawFrame(grid);
-		TextRenderer::updateFrame(grid);
+		TextRenderer::updateFrame();
 
 	}
 	return 0;

@@ -10,6 +10,6 @@ private:
 public:
 	Vector getTrajectory();
 	void setTrajectory(Vector vec);
-	Ball(Grid grid);
+	Ball(Grid &grid);
 };
 

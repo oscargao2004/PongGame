@@ -11,6 +11,6 @@ private:
 public:
 	Grid() : _width(0), _height(0) {}
 	Grid(int x, int y);
-	Tile getTileAt(Vector position);
+	Tile& getTileAt(Vector position);
 	Vector getDimensions();
 };
