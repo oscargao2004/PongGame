@@ -8,7 +8,8 @@ public:
 	static char const empty = ' ';
 
 	//static void draw(char c, Vector start, Vector end, Grid grid);
-	static void draw(char c, Vector pos, Grid &grid);
+	static void drawTile(Vector pos, Grid &grid, bool collision);
+	static void clearTile(Vector pos, Grid &grid);
 	static void drawFrame(Grid &grid);
 	static void updateFrame();
 };

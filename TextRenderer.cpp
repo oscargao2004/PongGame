@@ -2,22 +2,20 @@
 #include <iostream>
 #include <windows.h>
 
-void TextRenderer::draw(char c, Vector pos, Grid &grid)
+void TextRenderer::drawTile(Vector pos, Grid &grid, bool collision)
 {
 	Tile& tile = grid.getTileAt(pos);
-	tile.setChar(c);
-
-	if (c == TextRenderer::boxChar)
-	{
-		tile.setEmpty(false);
-	}
-	else
-	{
-		tile.setEmpty(true);
-	}
-
+	tile.setChar(TextRenderer::boxChar);
+	tile.setCollision(collision);
 }
 
+void TextRenderer::clearTile(Vector pos, Grid &grid)
+{
+	Tile& tile = grid.getTileAt(pos);
+	tile.setChar(TextRenderer::empty);
+	tile.setCollision(false);
+
+}
 /*void TextRenderer::draw(char c, Vector start, Vector end, Grid grid)
 {
 	Vector vec = end.subtract(start);

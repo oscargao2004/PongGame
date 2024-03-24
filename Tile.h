@@ -5,7 +5,7 @@ class Tile
 private:
 	Vector _position;
 	char _character;
-	bool _isEmpty;
+	bool _collision;
 	Vector _normal;
 
 	/*enum Type
@@ -21,8 +21,8 @@ private:
 public:
 	Vector getPosition();
 
-	void setEmpty(bool b);
-	bool isEmpty();
+	void setCollision(bool b);
+	bool isCollidable();
 
 	void setChar(char c);
 	char getChar();
@@ -30,5 +30,5 @@ public:
 	void setNormal(Vector vec);
 	Vector getNormal();
 	//Tile(Vector pos, char character, Type type) : _position(pos), _character(character), _tileType(type) {}
-	Tile(Vector pos, char character, bool b) : _position(pos), _character(character), _isEmpty(b) {}
+	Tile(Vector pos, char character, bool b) : _position(pos), _character(character), _collision(b) {}
 };

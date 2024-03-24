@@ -5,14 +5,14 @@ Vector Tile::getPosition()
     return _position;
 }
 
-void Tile::setEmpty(bool b)
+void Tile::setCollision(bool b)
 {
-    _isEmpty = b;
+    _collision = b;
 }
 
-bool Tile::isEmpty()
+bool Tile::isCollidable()
 {
-    return _isEmpty;
+    return _collision;
 }
 
 void Tile::setChar(char c)

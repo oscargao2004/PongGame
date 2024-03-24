@@ -7,23 +7,23 @@ Grid::Grid(int x, int y) : _width(x+2), _height(y+2)
 	{
 		for (int w = 0; w < _width; w++)
 		{
-			if (w > 0 && w < _width - 1 && h > 0 && h < _height - 1) //render empty spaces
+			if (w > 0 && w < _width - 1 && h > 0 && h < _height - 1) //create empty spaces
 			{
-				Tile newTile(Vector(w, h), TextRenderer::empty, true);
+				Tile newTile(Vector(w, h), TextRenderer::empty, false);
 				_tiles.push_back(newTile);
 			}
-			else //render border 
+			else //create border 
 			{
-				Tile newTile(Vector(w, h), TextRenderer::boxChar, false);
+				Tile newTile(Vector(w, h), TextRenderer::boxChar, true);
 				_tiles.push_back(newTile);
 
 				if (h == 0) //set normals for top/bottom border collisions
 				{
-					newTile.setNormal(Vector().up());
+					newTile.setNormal(Vector().down());
 				}
 				if (h == _height - 1)
 				{
-					newTile.setNormal(Vector().down());
+					newTile.setNormal(Vector().up());
 				}
 
 				if (w == 0) //set normals for paddle collisons

@@ -17,24 +17,24 @@ void Ball::move(Grid &grid)
     Tile& currentTile = grid.getTileAt(_position);
     Tile& nextTile = grid.getTileAt(_position.add(_trajectoryDirection));
 
-    if (nextTile.isEmpty())
+    if (!nextTile.isCollidable())
     {
-        currentTile.setChar(TextRenderer::empty);
-        currentTile.setEmpty(true);
-        nextTile.setChar(TextRenderer::boxChar);
-        nextTile.setEmpty(false);
+        TextRenderer::drawTile(nextTile.getPosition(), grid, false);
+        TextRenderer::clearTile(currentTile.getPosition(), grid);
 
         _position = nextTile.getPosition();
     }
-    else
+    else if (nextTile.isCollidable())
     {
-        if (nextTile.getNormal().x == 0)
+        if (nextTile.getNormal().x == 0) //if colliding surface has vertical normals
         {
-            _trajectoryDirection = Vector(_trajectoryDirection.x * -1, _trajectoryDirection.y);
+            _trajectoryDirection.y *= -1;
+
         }
-        if (nextTile.getNormal().y == 0)
+        else if (nextTile.getNormal().y == 0) //if colliding surface has horizontal normals
         {
-            _trajectoryDirection = Vector(_trajectoryDirection.x, _trajectoryDirection.y * -1);
+            _trajectoryDirection.x *= -1;
+
         }
     }
 
@@ -43,6 +43,6 @@ void Ball::move(Grid &grid)
 Ball::Ball(Vector pos, Grid &grid)
 {
     _position = pos;
-    TextRenderer::draw(TextRenderer::boxChar, pos, grid);
+    TextRenderer::drawTile(pos, grid, false);
 
 }
