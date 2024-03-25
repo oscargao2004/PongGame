@@ -104,9 +104,16 @@ int main()
 			}
 		}
 
-		//p2.move(Vector(0, clamp(ball.getTrajectory().y, grid.getDimensions().y - 2,  2)), grid);
-		pad2.move(Vector(0, ball.getTrajectory().y), grid);
-		//pad2.setPosition(Vector(0, ball.getTrajectory().y), grid);
+		//pad2.move(Vector(0, ball.getTrajectory().y), grid);
+
+		if (pad2.getPosition().y < ball.getPosition().y)
+		{
+			pad2.move(Vector().down(), grid);
+		}
+		else if (pad2.getPosition().y > ball.getPosition().y)
+		{
+			pad2.move(Vector().up(), grid);
+		}
 
 
 		//when ball reaches either side
