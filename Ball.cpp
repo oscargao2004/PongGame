@@ -7,6 +7,11 @@ Vector Ball::getPosition()
     return _position;
 }
 
+void Ball::setPosition(Vector vec)
+{
+    _position = vec;
+}
+
 Vector Ball::getTrajectory()
 {
     return _trajectoryDirection;

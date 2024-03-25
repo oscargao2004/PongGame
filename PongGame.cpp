@@ -9,9 +9,15 @@
 #include "Menu.h"
 #include "Player.h"
 #include "Scoreboard.h"
+#include <windows.h>
 
 Grid grid(20, 15);
 InputHandler input;
+
+Ball ball(Vector(5, 7), grid);
+
+Paddle pad1(Vector(2, grid.getDimensions().y / 2), 3, grid);
+Paddle pad2(Vector(grid.getDimensions().x - 3, grid.getDimensions().y / 2), 3, grid);
 
 int clamp(int num, int min, int max)
 {
@@ -30,9 +36,11 @@ int clamp(int num, int min, int max)
 
 }
 
-void resetGame()
+void resetGame() 
 {
-		
+	TextRenderer::clearFrame();
+	ball.setPosition(Vector(5, 7));
+	ball.setTrajectory(Vector().right().add(Vector().up()));
 }
 
 int main()
@@ -40,24 +48,29 @@ int main()
 	bool running;
 
 	int roundNum = 0;
-	int rounds = 10;
-
-	Ball ball(Vector(5, 7), grid);
-
-	Paddle pad1(Vector(2, grid.getDimensions().y / 2), 3, grid);
-	Paddle pad2(Vector(grid.getDimensions().x - 3, grid.getDimensions().y / 2), 3, grid);
 
 	std::string p1name;
 	Player p1(p1name);
 	Player p2("CPU");
 	ball.setTrajectory(Vector().right().add(Vector().down()));
 
-	if (Menu::start())
+	if (Menu::display())
 	{
+		TextRenderer::clearFrame();
+
 		std::cout << "Please input a name: ";
 		std::cin >> p1name;
 
 		p1.setName(p1name);
+
+		TextRenderer::clearFrame();
+
+		std::cout << "3\n"; 
+		Sleep(1000);
+		std::cout << "2\n";
+		Sleep(1000);
+		std::cout << "1\n";
+		Sleep(1000);
 
 		TextRenderer::clearFrame();
 		running = true;
@@ -93,41 +106,28 @@ int main()
 
 		//p2.move(Vector(0, clamp(ball.getTrajectory().y, grid.getDimensions().y - 2,  2)), grid);
 		pad2.move(Vector(0, ball.getTrajectory().y), grid);
+		//pad2.setPosition(Vector(0, ball.getTrajectory().y), grid);
 
 
-		if (ball.getPosition().x == 1)
+		//when ball reaches either side
+		if (ball.getPosition().x == 1) //if ball reaches left side
 		{
-			if (roundNum > rounds)
-			{
-				exit(0);
-			}
-			else
-			{
-				p2.addScore(1);
-				resetGame();
-				roundNum++;
-
-			}
+			std::cout << "You scored: " << p1.getScore() << std::endl;
+			exit(0);
 		}
-		else if (ball.getPosition().x == grid.getDimensions().x - 2)
+		else if (ball.getPosition().x == grid.getDimensions().x - 2) //if ball reaches right side
 		{
-			if (roundNum > rounds)
-			{
-				exit(0);
-			}
-			else
-			{
-				p1.addScore(1);
-				resetGame();
-				roundNum++;
-
-			}
+			TextRenderer::clearTile(ball.getPosition(), grid);
+			p1.addScore(1);
+			resetGame();
+			roundNum++;
 		}
 
-		std::cout << "Round: " << roundNum << " / " << rounds << std::endl;
+		std::cout << "Round: " << roundNum << std::endl;
 		Scoreboard::display(p1, p2);
 		TextRenderer::drawFrame(grid);
 		TextRenderer::updateFrame();
 	}
 	return 0;
 }
+

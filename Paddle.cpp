@@ -58,3 +58,26 @@ Vector Paddle::getPosition()
 {
 	return _position;
 }
+
+void Paddle::setPosition(Vector vec, Grid &grid)
+{
+	_position = vec;
+
+	//clear current tiles
+	TextRenderer::clearTile(_position, grid);
+
+	for (int i = 0; i < _paddleLength / 2; i++)
+	{
+		TextRenderer::clearTile(_position.add(Vector(0, i + 1)), grid);
+		TextRenderer::clearTile(_position.add(Vector(0, -i - 1)), grid);
+	}
+
+	//draw new tiles
+	TextRenderer::drawTile(_position, grid, true);
+
+	for (int i = 0; i < _paddleLength / 2; i++)
+	{
+		TextRenderer::drawTile(_position.add(Vector(0, i + 1)), grid, true);
+		TextRenderer::drawTile(_position.add(Vector(0, -i - 1)), grid, true);
+	}
+}

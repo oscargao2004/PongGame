@@ -2,6 +2,6 @@
 class Menu
 {
 public:
-	static bool start();
+	static bool display();
 };
 

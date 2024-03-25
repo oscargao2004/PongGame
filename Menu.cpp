@@ -4,11 +4,12 @@
 #include <stdlib.h>
 
 using namespace std;
-bool Menu::start()
+bool Menu::display()
 {
 	char choice;
 
 	cout << "Start Y/N\n";
+	cout << "Input S to View Scoreboard\n";
 	cin >> choice;
 
 	if (choice == 'Y')
@@ -19,6 +20,10 @@ bool Menu::start()
 	else if (choice == 'N')
 	{
 		return false;
+	}
+	else if (choice == 'S')
+	{
+
 	}
 	else
 	{
