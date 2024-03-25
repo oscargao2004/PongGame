@@ -138,7 +138,9 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PongGame.cpp" />
+    <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -149,9 +151,14 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Vector.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Highscores.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

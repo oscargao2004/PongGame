@@ -12,5 +12,6 @@ public:
 	static void clearTile(Vector pos, Grid &grid);
 	static void drawFrame(Grid &grid);
 	static void updateFrame();
+	static void clearFrame();
 };
 

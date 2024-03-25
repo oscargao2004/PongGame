@@ -45,3 +45,14 @@ void TextRenderer::updateFrame()
 
 	Sleep(1000/10); //adjust framerate
 }
+
+void TextRenderer::clearFrame()
+{
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD defaultCursorPos = { 0,0 };
+	DWORD writtenChars;
+
+	FillConsoleOutputCharacter(console, ' ', 50 * 50, defaultCursorPos, &writtenChars);
+
+	SetConsoleCursorPosition(console, defaultCursorPos);
+}

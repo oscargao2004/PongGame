@@ -8,6 +8,7 @@ private:
 	Vector _position;
 	Vector _trajectoryDirection;
 public:
+	Vector getPosition();
 	Vector getTrajectory();
 	void setTrajectory(Vector vec);
 	void move(Grid &grid);
