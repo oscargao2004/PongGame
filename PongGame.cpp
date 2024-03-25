@@ -128,7 +128,7 @@ int main()
 					}
 				}
 			}*/
-			exit(0);
+			return 0;
 		}
 		else if (ball.getPosition().x == grid.getDimensions().x - 2) //if ball reaches right side
 		{
