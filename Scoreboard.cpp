@@ -18,5 +18,5 @@ int Scoreboard::getHighest()
 
 void Scoreboard::addPlayer(Player p)
 {
-    //write to file in this format: Player score
+    //_players.push_back(p);
 }

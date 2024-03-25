@@ -113,6 +113,21 @@ int main()
 		if (ball.getPosition().x == 1) //if ball reaches left side
 		{
 			std::cout << "You scored: " << p1.getScore() << std::endl;
+			/*if (Scoreboard::_players.size() == 0)
+			{
+				Scoreboard::addPlayer(p1);
+			}
+			else
+			{
+				for (Player& player : Scoreboard::_players)
+				{
+					if (p1.getScore() > player.getScore())
+					{
+						player.setName(p1.getName());
+						player.setScore(p1.getScore());
+					}
+				}
+			}*/
 			exit(0);
 		}
 		else if (ball.getPosition().x == grid.getDimensions().x - 2) //if ball reaches right side
